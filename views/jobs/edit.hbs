@@ -1,15 +1,15 @@
 <div class="row">
-    <div class="col-md-10">
-        <h1 class="col-md-5">Edit Job Posting</h1>
 
-        <form class="form-horizontal col-md-2 pull-right" action="/jobs/{{_id}}/delete" method="post">
+        <h2 class="col-md-3">Edit Job Posting</h2>
+
+        <form class="form-horizontal col-md-2 " action="/jobs/{{_id}}/delete" method="post">
             <div class="form-group">
-                <div class="col-sm-offset-5">
+                <div class="">
                     <button class="btn btn-default" type="submit">Delete Post</button>
                 </div>
             </div>
         </form>
-    </div>
+
 </div>
 
 <div class="row">
@@ -44,7 +44,7 @@
             <label for="responsibilities" class="col-sm-2 control-label">Responsibilities</label>
 
             <div class="col-sm-10">
-                <textarea required name="responsibilities" id="responsibilities" class="form-control"
+                <textarea name="responsibilities" id="responsibilities" class="form-control"
                           rows="10">{{responsibilities}}</textarea>
             </div>
         </div>
@@ -58,8 +58,8 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">Save Changes</button>
-                <a href="/jobs">
-                    <button class="btn btn-default">Cancel</button>
+                <a href="/jobs/{{_id}}">
+                    Cancel
                 </a>
             </div>
             <div class="col-sm-offset-2 col-sm-10">

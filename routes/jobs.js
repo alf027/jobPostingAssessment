@@ -7,7 +7,12 @@ router.get('/', function (req, res, next) {
   var db = req.db;
   var jobs = db.get('jobs');
 
-  jobs.find({}, function (err, docs) {
+  jobs.find({isOpen:true},{sort:{date: -1}}, function (err, docs) {
+    for(var i =0 ;i<docs.length;i++){
+      var date = docs[i].date.toJSON().slice(0, 10);
+      docs[i].date = date;
+    }
+
     res.render('jobs/index', {title: 'Jobs', jobs: docs});
   })
 });
@@ -19,7 +24,7 @@ router.post('/', function (req, res, next) {
   posting.isOpen = true;
   posting.date = new Date();
 
-  console.log(posting.date.toJSON().slice(0, 10));
+
   console.log(posting);
   jobs.insert(posting, function (err, doc) {
     if (err) {
@@ -73,19 +78,21 @@ router.post('/:id/delete',function(req,res,next){
   var jobs = db.get('jobs');
 
   jobs.remove({_id:req.params.id},function(err,doc){
-    res.redirect('/')
+    res.redirect('/jobs')
   })
 });
 
 router.get('/:id', function (req, res, next) {
   var db = req.db;
   var jobs = db.get('jobs');
-  var applicants = db.get('applicants');
+  var applicants = db.get('applications');
 
   jobs.findOne({_id: req.params.id}, function (err, job) {
     applicants.find({jobId: req.params.id}, function (err, apps) {
       job.applicants = apps;
+      console.log(apps);
       console.log(job);
+      job.date = job.date.toJSON().slice(0, 10);
       res.render('jobs/show', job)
     })
 

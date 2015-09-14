@@ -1,5 +1,7 @@
+
+
 <div class="row">
-    <h1 class="col-md-5">{{jobTitle}} - {{companyName}}</h1>
+    <h2 class="col-md-5">{{jobTitle}} - at {{companyName}}</h2>
     <a href="/jobs/{{_id}}/edit" class="col-md-2 pull-right">
         <button class="btn">Edit Job Posting</button>
     </a>
@@ -9,21 +11,57 @@
 </div>
 
 <div class="row">
+    <p>Description:</p>
     <p>{{description}}</p>
 </div>
 <div class="row">
+    <p>Responsibilities:</p>
     <p>{{responsibilities}}</p>
 
 </div>
 
 
 <div class="row">
+{{#if isOpen}}
     <a href="/jobs/{{_id}}/applications/new">
-        <button>Apply For Job</button>
-    </a> This posting is {{isOpen}}
+        <button class="btn btn-default">Apply For Job</button>
+    </a>
+{{/if}}
+
+    {{#if isOpen}}This posting is still open {{else}} This posting is closed {{/if}}
 </div>
 
 <h1 class="row">Current Applicants</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Resume Url</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each this.applicants}}
+        <tr>
+            <td scope="row">
+                {{name}}
+            </td>
+            <td>{{email}}
+            </td>
+            <td>{{resumeUrl}}
+            </td>
+            <td>
+                <form action="/jobs/{{jobId}}/applications/{{_id}}/delete" method="post">
+                    <button class='btn btn-danger' type="submit">Delete</button>
+                </form></td>
+        </tr>
+    {{/each}}
+    </tbody>
+
+</table>
+
 <div class="row">
 
 </div>

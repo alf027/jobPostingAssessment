@@ -1,8 +1,37 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*body {*/
+  /*padding: 50px;*/
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+/*}*/
+
+/*a {*/
+  /*color: #00B7FF;*/
+/*}*/
+
+#title{
+  /*margin: 0;*/
+  padding-bottom: 25px;
 }
 
-a {
-  color: #00B7FF;
+/*h2 {*/
+  /**/
+  /*/!*padding-bottom: 20px;*!/*/
+/*}*/
+
+.row h2 {
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+.title {
+  padding:0px;
+}
+
+.job {
+  /*margin: 0 auto;*/
+  margin: 20px 0 20px 0 ;
+  border: 1px solid black;
+}
+
+.job button {
+  margin: 20px 20px 20px 0px;
 }

@@ -1,23 +1,31 @@
 <div class="row">
-    <h3 class='col-md-4'>Current Open Positions</h3>
-    <a href="/jobs/new">
-        <button class='col-md-2 pull-right'>Create New Job Posting</button>
-    </a>
+    <div class="col-md-12 title">
+        <h2 class='col-md-6 '>Current Open Positions</h2>
+        <a href="/jobs/new">
+            <button class='btn btn-default pull-right'>Create New Job Posting</button>
+        </a>
+    </div>
+
 </div>
 
-<div class="row">
-    {{#each jobs}}
-        <div class="col-md-10">
-            <p>{{jobTitle}}  - {{companyName}} - posted {{date}}</p>
+
+{{#each jobs}}
+    <div class="row">
+        <div class="job col-md-12">
+            <h4><strong>{{jobTitle}}</strong>  - <strong>{{companyName}}</strong> - posted {{date}}</h4>
+            <p>Description:</p>
+            <p>{{description}}</p>
 
 
-            {{description}}
+
             <div>
-                <a href="/jobs/{{_id}}"><button>View Job</button></a>
+                <a href="/jobs/{{_id}}">
+                    <button class="btn btn-default">View Job</button>
+                </a>
 
             </div>
 
         </div>
-    {{/each}}
+    </div>
+{{/each}}
 
-</div>
